@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - simple-react-app
 on:
   push:
     branches:
-      - dev
+      - 'dev'
   workflow_dispatch:
 
 jobs:
@@ -24,11 +24,6 @@ jobs:
           node-version: '24.x'
 
       - name: npm install, build, and test
-
-        env:
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          
         run: |
           npm install
           npm run build --if-present
@@ -56,9 +51,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9A400C2044584105BDA912C5C54C27F2 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_34E8792520E348A5A7FADFAA32819F76 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3E742DB117954AA2ABFA3C54958D5017 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D1D587C0D80A4955B1E3AD46CA6E9424 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1C8C68A227804D1EB7B24063EB352E3B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_55B3F61E0E55420CB0BC3B695878006C }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
